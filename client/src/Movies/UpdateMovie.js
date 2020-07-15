@@ -20,7 +20,8 @@ margin-left: 11%;
 const initialMovie = {
     title: "",
     director: "",
-    metascore: ""
+    metascore: "",
+    stars:[]
 }
 
 export default function UpdateMovie(props) {
@@ -59,6 +60,7 @@ export default function UpdateMovie(props) {
         .then((res) => {
           console.log(res.data)
           push("/");
+          props.getMovieList();
         })
         .catch((err) => {
           console.log(err);
@@ -87,6 +89,15 @@ export default function UpdateMovie(props) {
           value={movie.metascore}
           onChange={changeMovieInputs}
         />
+
+        <label htmlFor="stars">stars</label>
+        <input 
+         type="text"
+         name="stars"
+         value={movie.stars}
+         onChange={changeMovieInputs}
+         />
+
         <button>Update Movie</button>
       </UpdateMovieForm>
     );
